@@ -7,13 +7,13 @@ userForm.loginFormCallback = data =>
     if (response.success) 
       location.reload();
     else
-      alert(response.data);
+      userForm.setLoginErrorMessage(response.data);
   });
 
 userForm.registerFormCallback = data =>
   ApiConnector.register(data, response => {
-    if ((response.success === undefined) || response.success) // Почему-то при успешном выполнении response.success отсутствует
+    if (response.success)
       location.reload();
     else
-      alert(response.data);
+      userForm.setRegisterErrorMessage(response.data);
   });
